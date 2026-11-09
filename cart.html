@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>购物车 - 校易购</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="top-bar">新学期特惠：全场满 59 减 10，满 99 减 20，送货上门到宿舍</div>
+    <nav>
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo">
+                <div class="nav-logo-mark">校</div>
+                <span class="nav-logo-text">校易购</span>
+            </a>
+            <div class="nav-search">
+                <svg class="nav-search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                </svg>
+                <input type="text" placeholder="搜索商品、店铺、服务">
+            </div>
+            <div class="nav-actions">
+                <a href="index.html" class="nav-action" title="返回首页">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                    </svg>
+                    <span>首页</span>
+                </a>
+                <a href="login.html" class="nav-action">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                    </svg>
+                    <span>我的</span>
+                </a>
+                <a href="cart.html" class="nav-action nav-cart">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                    </svg>
+                    <span>购物车</span>
+                    <div class="cart-badge">0</div>
+                </a>
+            </div>
+        </div>
+    </nav>
+    <div class="page-header">
+        <div class="container">
+            <h1 class="page-title">购物车</h1>
+        </div>
+    </div>
+    <div class="container">
+        <div class="cart-layout">
+            <div class="cart-list" id="cart-list"></div>
+            <div class="cart-summary">
+                <h3 class="summary-title">订单摘要</h3>
+                <div class="summary-row"><span>商品件数</span><span id="total-items">0 件</span></div>
+                <div class="summary-row"><span>商品金额</span><span id="subtotal">¥0.00</span></div>
+                <div class="summary-row"><span>运费</span><span>免运费</span></div>
+                <div class="summary-row total"><span>合计</span><span class="summary-price" id="total-price">¥0.00</span></div>
+                <button class="checkout-btn" onclick="checkout()">去结算</button>
+                <button onclick="goHome()" style="width: 100%; height: 44px; background: var(--bg-raised); color: var(--text-primary); border: 1px solid var(--hairline); border-radius: 8px; font-size: 14px; cursor: pointer; margin-top: var(--space-3);">继续购物</button>
+            </div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+    <script>
+        function renderCart() {
+            const cartList = document.getElementById('cart-list');
+            if (cart.length === 0) {
+                cartList.innerHTML = '<div style="text-align: center; padding: 60px 20px; color: var(--text-muted); background: var(--bg-card); border-radius: 12px;"><p style="font-size: 16px; margin-bottom: 16px;">购物车是空的</p><a href="index.html" style="color: var(--accent); text-decoration: none;">去逛逛</a></div>';
+                updateSummary();
+                return;
+            }
+            cartList.innerHTML = cart.map(item => `
+                <div class="cart-item">
+                    <div class="cart-item-image"><img src="${item.image}" alt="${item.name}"></div>
+                    <div class="cart-item-info">
+                        <div class="cart-item-name">${item.name}</div>
+                        <div class="cart-item-price">¥${item.price}</div>
+                    </div>
+                    <div class="cart-item-actions">
+                        <div class="quantity-control">
+                            <button class="quantity-btn" onclick="updateQuantity(${item.id}, -1)">-</button>
+                            <input type="text" class="quantity-input" value="${item.quantity}" readonly>
+                            <button class="quantity-btn" onclick="updateQuantity(${item.id}, 1)">+</button>
+                        </div>
+                        <button class="remove-btn" onclick="removeItem(${item.id})">删除</button>
+                    </div>
+                </div>
+            `).join('');
+            updateSummary();
+        }
+
+        function updateQuantity(id, change) {
+            const item = cart.find(i => i.id === id);
+            if (!item) return;
+            item.quantity += change;
+            if (item.quantity <= 0) cart = cart.filter(i => i.id !== id);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartBadge();
+            renderCart();
+        }
+
+        function removeItem(id) {
+            cart = cart.filter(i => i.id !== id);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartBadge();
+            renderCart();
+            showToast('已删除商品');
+        }
+
+        function updateSummary() {
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+            document.getElementById('total-items').textContent = totalItems + ' 件';
+            document.getElementById('subtotal').textContent = '¥' + subtotal.toFixed(2);
+            document.getElementById('total-price').textContent = '¥' + subtotal.toFixed(2);
+        }
+
+        function checkout() {
+            if (cart.length === 0) { showToast('购物车是空的'); return; }
+            showToast('跳转到结算页面...');
+        }
+
+        renderCart();
+    </script>
+</body>
+</html>

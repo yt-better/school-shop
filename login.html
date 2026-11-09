@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录 - 校易购</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo">
+                <div class="nav-logo-mark">校</div>
+                <span class="nav-logo-text">校易购</span>
+            </a>
+            <div class="nav-actions">
+                <a href="index.html" class="nav-action">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                    <span>返回首页</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <div class="auth-logo">校</div>
+                <h1 class="auth-title">欢迎回来</h1>
+                <p class="auth-desc">登录校易购，享受校园生活便利</p>
+            </div>
+            <form class="auth-form" onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label class="form-label">学号/手机号</label>
+                    <input type="text" class="form-input" placeholder="请输入学号或手机号" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">密码</label>
+                    <input type="password" class="form-input" placeholder="请输入密码" required>
+                </div>
+                <button type="submit" class="auth-btn">登 录</button>
+            </form>
+            <div class="auth-links">
+                <a href="#" class="auth-link">忘记密码？</a>
+                <a href="register.html" class="auth-link">注册新账号</a>
+            </div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+    <script>
+        function handleLogin(e) {
+            e.preventDefault();
+            showToast('登录成功！');
+            setTimeout(() => { window.location.href = 'index.html'; }, 1000);
+        }
+    </script>
+</body>
+</html>

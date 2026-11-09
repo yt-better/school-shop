@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>校易购 - 校园生活一站式服务平台</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+</head>
+<body>
+    <!-- 顶部公告 -->
+    <div class="top-bar">
+        新学期特惠：全场满 59 减 10，满 99 减 20，送货上门到宿舍
+    </div>
+
+    <!-- 导航栏 -->
+    <nav>
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo">
+                <div class="nav-logo-mark">校</div>
+                <span class="nav-logo-text">校易购</span>
+            </a>
+            <div class="nav-search">
+                <svg class="nav-search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                </svg>
+                <input type="text" placeholder="搜索商品、店铺、服务">
+            </div>
+            <div class="nav-actions">
+                <a href="login.html" class="nav-action">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                    </svg>
+                    <span>我的</span>
+                </a>
+                <a href="#" class="nav-action">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                    </svg>
+                    <span>收藏</span>
+                </a>
+                <a href="cart.html" class="nav-action nav-cart">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                    </svg>
+                    <span>购物车</span>
+                    <div class="cart-badge">0</div>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 分类导航 -->
+    <div class="category-nav">
+        <div class="category-list">
+            <a href="index.html" class="category-item active">首页</a>
+            <a href="category.html?cat=snacks" class="category-item">零食速食</a>
+            <a href="category.html?cat=beverages" class="category-item">饮料冲调</a>
+            <a href="category.html?cat=fruits" class="category-item">生鲜水果</a>
+            <a href="category.html?cat=stationery" class="category-item">文具办公</a>
+            <a href="category.html?cat=digital" class="category-item">数码配件</a>
+            <a href="category.html?cat=dorm" class="category-item">生活用品</a>
+            <a href="second-hand.html" class="category-item">二手闲置</a>
+            <a href="services.html" class="category-item">校园服务</a>
+        </div>
+    </div>
+
+    <!-- Hero Banner 轮播图 -->
+    <div class="hero-banner">
+        <div class="container">
+            <div class="banner-grid">
+                <!-- 左侧分类 -->
+                <div class="side-menu">
+                    <div class="side-menu-title">商品分类</div>
+                    <ul class="side-menu-list">
+                        <li class="side-menu-item" onclick="location.href='category.html?cat=snacks'">
+                            <span>零食速食</span>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </li>
+                        <li class="side-menu-item" onclick="location.href='category.html?cat=beverages'">
+                            <span>饮料冲调</span>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </li>
+                        <li class="side-menu-item" onclick="location.href='category.html?cat=fruits'">
+                            <span>生鲜水果</span>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </li>
+                        <li class="side-menu-item" onclick="location.href='category.html?cat=stationery'">
+                            <span>文具办公</span>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </li>
+                        <li class="side-menu-item" onclick="location.href='category.html?cat=digital'">
+                            <span>数码配件</span>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </li>
+                        <li class="side-menu-item" onclick="location.href='category.html?cat=dorm'">
+                            <span>生活用品</span>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </li>
+                        <li class="side-menu-item" onclick="location.href='second-hand.html'">
+                            <span>二手闲置</span>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </li>
+                        <li class="side-menu-item" onclick="location.href='services.html'">
+                            <span>校园服务</span>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 中间轮播图 -->
+                <div class="carousel">
+                    <div class="carousel-slides">
+                        <div class="carousel-slide slide-1">
+                            <span class="banner-tag">限时秒杀</span>
+                            <h1 class="banner-title">开学季大促<br>低至 5 折起</h1>
+                            <p class="banner-desc">零食饮料、生活用品、数码配件，应有尽有，送货到宿舍楼下</p>
+                            <a href="category.html" class="banner-btn">立即抢购</a>
+                        </div>
+                        <div class="carousel-slide slide-2">
+                            <span class="banner-tag">新鲜直达</span>
+                            <h1 class="banner-title">生鲜水果<br>每日新鲜上架</h1>
+                            <p class="banner-desc">当季水果、新鲜蔬菜，产地直供，保证品质</p>
+                            <a href="category.html?cat=fruits" class="banner-btn">去逛逛</a>
+                        </div>
+                        <div class="carousel-slide slide-3">
+                            <span class="banner-tag">数码专区</span>
+                            <h1 class="banner-title">数码配件<br>学生专享价</h1>
+                            <p class="banner-desc">耳机、键盘、鼠标、支架，学习娱乐两不误</p>
+                            <a href="category.html?cat=digital" class="banner-btn">查看详情</a>
+                        </div>
+                    </div>
+
+                    <!-- 轮播控制 -->
+                    <button class="carousel-arrow prev">‹</button>
+                    <button class="carousel-arrow next">›</button>
+                    <div class="carousel-controls">
+                        <div class="carousel-dot active"></div>
+                        <div class="carousel-dot"></div>
+                        <div class="carousel-dot"></div>
+                    </div>
+                </div>
+
+                <!-- 右侧面板 -->
+                <div class="side-panel">
+                    <div class="panel-card user-card">
+                        <div class="user-avatar">W</div>
+                        <div class="user-name">王同学</div>
+                        <div class="user-desc">登录后享受更多优惠</div>
+                        <a href="login.html" class="user-btn">立即登录</a>
+                    </div>
+                    <div class="panel-card">
+                        <div class="panel-title">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            平台公告
+                        </div>
+                        <ul class="panel-list">
+                            <li>新增快递代取服务</li>
+                            <li>二手交易区上线</li>
+                            <li>满减活动延期通知</li>
+                            <li>校园跑腿服务升级</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 快捷入口 -->
+    <div class="quick-links">
+        <div class="container">
+            <div class="quick-links-grid">
+                <a href="category.html?cat=flash" class="quick-link">
+                    <div class="quick-link-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <div class="quick-link-name">限时秒杀</div>
+                </a>
+                <a href="#" class="quick-link">
+                    <div class="quick-link-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                        </svg>
+                    </div>
+                    <div class="quick-link-name">拼团优惠</div>
+                </a>
+                <a href="second-hand.html" class="quick-link">
+                    <div class="quick-link-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+                        </svg>
+                    </div>
+                    <div class="quick-link-name">二手市场</div>
+                </a>
+                <a href="services.html" class="quick-link">
+                    <div class="quick-link-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <div class="quick-link-name">校园跑腿</div>
+                </a>
+                <a href="services.html" class="quick-link">
+                    <div class="quick-link-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                        </svg>
+                    </div>
+                    <div class="quick-link-name">快递代取</div>
+                </a>
+                <a href="category.html" class="quick-link">
+                    <div class="quick-link-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                        </svg>
+                    </div>
+                    <div class="quick-link-name">更多服务</div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 数据图表区 -->
+    <section class="charts-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-title-wrap">
+                    <div class="section-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                        </svg>
+                    </div>
+                    <h2 class="section-title">平台数据</h2>
+                </div>
+            </div>
+            <div class="charts-grid">
+                <div class="chart-card">
+                    <div class="chart-title">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"></path>
+                        </svg>
+                        销售趋势
+                    </div>
+                    <div class="chart-container" id="sales-chart"></div>
+                </div>
+                <div class="chart-card">
+                    <div class="chart-title">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"></path>
+                        </svg>
+                        分类销量
+                    </div>
+                    <div class="chart-container" id="category-chart"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 热门商品 -->
+    <section>
+        <div class="container">
+            <div class="section-header">
+                <div class="section-title-wrap">
+                    <div class="section-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"></path>
+                        </svg>
+                    </div>
+                    <h2 class="section-title">热门推荐</h2>
+                </div>
+                <a href="category.html" class="section-more">
+                    查看更多
+                    <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </a>
+            </div>
+            <div class="product-grid" id="hot-products">
+                <!-- 商品由 JS 渲染 -->
+            </div>
+        </div>
+    </section>
+
+    <!-- 校园服务 -->
+    <section style="background: var(--bg-card); border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline);">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-title-wrap">
+                    <div class="section-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                        </svg>
+                    </div>
+                    <h2 class="section-title">校园服务</h2>
+                </div>
+                <a href="services.html" class="section-more">
+                    全部服务
+                    <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </a>
+            </div>
+            <div class="services-grid">
+                <div class="service-card" onclick="location.href='services.html'">
+                    <div class="service-image">
+                        <img src="locker.png" alt="快递代取">
+                    </div>
+                    <div class="service-body">
+                        <div class="service-name">快递代取</div>
+                        <div class="service-desc">菜鸟驿站、顺丰、京东快递，送货到宿舍楼下</div>
+                    </div>
+                </div>
+                <div class="service-card" onclick="location.href='services.html'">
+                    <div class="service-image">
+                        <img src="delivery.png" alt="校园跑腿">
+                    </div>
+                    <div class="service-body">
+                        <div class="service-name">校园跑腿</div>
+                        <div class="service-desc">代买代送、排队代办，30 分钟极速响应</div>
+                    </div>
+                </div>
+                <div class="service-card" onclick="location.href='second-hand.html'">
+                    <div class="service-image">
+                        <img src="books.png" alt="二手教材">
+                    </div>
+                    <div class="service-body">
+                        <div class="service-name">二手教材</div>
+                        <div class="service-desc">教材、考研资料、四六级书籍，低价回收出售</div>
+                    </div>
+                </div>
+                <div class="service-card" onclick="location.href='services.html'">
+                    <div class="service-image">
+                        <img src="dorm.png" alt="兼职信息">
+                    </div>
+                    <div class="service-body">
+                        <div class="service-name">兼职信息</div>
+                        <div class="service-desc">校内勤工俭学、校外实习兼职，安全可靠</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 猜你喜欢 -->
+    <section>
+        <div class="container">
+            <div class="section-header">
+                <div class="section-title-wrap">
+                    <div class="section-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                        </svg>
+                    </div>
+                    <h2 class="section-title">猜你喜欢</h2>
+                </div>
+            </div>
+            <div class="product-grid" id="recommend-products">
+                <!-- 商品由 JS 渲染 -->
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="footer-main">
+                <div class="footer-grid">
+                    <div>
+                        <div class="footer-brand">
+                            <div class="nav-logo-mark">校</div>
+                            <span class="nav-logo-text">校易购</span>
+                        </div>
+                        <p class="footer-desc">专注校园生活服务的电商平台，让大学生活更便捷、更实惠。</p>
+                    </div>
+                    <div class="footer-col">
+                        <h4>购物指南</h4>
+                        <ul class="footer-links">
+                            <li><a href="#">购物流程</a></li>
+                            <li><a href="#">会员介绍</a></li>
+                            <li><a href="#">常见问题</a></li>
+                            <li><a href="#">联系客服</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>配送方式</h4>
+                        <ul class="footer-links">
+                            <li><a href="#">送货到寝</a></li>
+                            <li><a href="#">自提点</a></li>
+                            <li><a href="#">配送时间</a></li>
+                            <li><a href="#">配送范围</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>支付方式</h4>
+                        <ul class="footer-links">
+                            <li><a href="#">校园卡支付</a></li>
+                            <li><a href="#">微信支付</a></li>
+                            <li><a href="#">支付宝</a></li>
+                            <li><a href="#">余额支付</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>商家服务</h4>
+                        <ul class="footer-links">
+                            <li><a href="#">入驻平台</a></li>
+                            <li><a href="#">商家后台</a></li>
+                            <li><a href="#">运营支持</a></li>
+                            <li><a href="#">规则中心</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-copy"> 2026 校易购 · 校园生活服务平台</p>
+                <div class="footer-cert">
+                    <span>营业执照</span>
+                    <span>食品经营许可证</span>
+                    <span>校园合作认证</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+    <script>
+        // 渲染热门商品
+        renderProducts(sortBySales(products).slice(0, 10), document.getElementById('hot-products'));
+
+        // 渲染推荐商品
+        renderProducts(products.slice(0, 5), document.getElementById('recommend-products'));
+
+        // 初始化图表
+        initCharts();
+    </script>
+</body>
+</html>
